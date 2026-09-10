@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/go-redis/redis/v8"
@@ -12,10 +13,11 @@ var ctx = context.Background()
 var rdb *redis.Client
 
 func InitializeRedis() {
+	redis_address := os.Getenv("REDIS_ADDRESS")
 	rdb = redis.NewClient(&redis.Options{
-		Addr:     "host.docker.internal:6379", // Redis server address
-		Password: "",                          // No password set
-		DB:       0,                           // Use default DB
+		Addr:     redis_address, // Redis server address
+		Password: "",            // No password set
+		DB:       0,             // Use default DB
 	})
 
 	pong, err := rdb.Ping(ctx).Result()
