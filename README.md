@@ -5,6 +5,27 @@ from a prompt daily.
 
 ## Dev Setup
 
+### Local Setup
+
+In the .env file, make sure to use localhost instead of host.docker.internal
+for OLLAMA_URL and REDIS_ADDRESS
+
+Run Redis Docker container.
+
+In powershell/commandline, use ollama to run LLAMA3.2 1b
+
+```bash
+    ollama run llama3.2:1b
+```
+
+Then run the server:
+
+```bash
+    go run main.go
+```
+
+### Docker Setup
+
 ### Pull Ollama and Redis images
 
 ```bash
